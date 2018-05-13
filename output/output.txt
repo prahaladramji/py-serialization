@@ -1,0 +1,28 @@
+------------------------------------------------
+----------  Output in TEXT Format  -------------
+------------------------------------------------
+	Name		:	Jonathan Gatliff 
+	Address		:	31 Fitzroy Street MOUNT CLEAR VIC 3350 
+	Phone		:	(03) 5325 7220 
+
+------------------------------------------------
+	Name		:	Natalie Serra 
+	Address		:	29 Insignia Way BOULDER WA 6432 
+	Phone		:	(08) 9047 1739 
+
+------------------------------------------------
+	Name		:	Ben Elmslie 
+	Address		:	90 Glen William Road BRAMSTON BEACH QLD 4871 
+	Phone		:	(07) 4082 5291 
+
+------------------------------------------------
+	Name		:	Lilian Mahon 
+	Address		:	67 Shaw Drive TIMOR WEST VIC 3465 
+	Phone		:	(03) 5394 8585 
+
+------------------------------------------------
+	Name		:	Leah Snider 
+	Address		:	23 Ulomogo Street OLD HARBOUR NSW 2830 
+	Phone		:	(02) 4055 6933 
+
+------------------------------------------------
