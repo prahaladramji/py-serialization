@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os
+import sys
 import csv
 import webbrowser
 from collections import OrderedDict
@@ -47,3 +48,8 @@ def open_file(file_path=None):
         webbrowser.open("file://" + file_path)
     except Exception, e:
         print("Unable to open file in {0} :: ERROR: {1}".format(file_path, e))
+
+
+def write_file(file_path=None, data=None):
+    with open(file_path, "w") as writer:
+        writer.write(data)
