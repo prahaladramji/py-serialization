@@ -4,7 +4,7 @@
 import os
 import config
 from pprint import pprint
-from modules import utilities, encoder, exporter
+from modules import utilities, serializer, exporter
 
 if not os.path.isdir(config.OUTPUT_DIR):
     print('Creating output directory {0}'.format(config.OUTPUT_DIR))
@@ -15,21 +15,24 @@ if not os.path.isdir(config.OUTPUT_DIR):
 
 
 if __name__ == '__main__':
-    user_data = utilities.read_data_file(config.TEST_DATA)
-    user_data = utilities.build_data(user_data)
+    user_data = utilities.build_data(utilities.read_data_file(config.TEST_DATA))
 
     ''' Serializations '''
     # JSON serializations
-    json_blob = encoder.JsonSerializer(data=user_data)
-    json_file = json_blob.encode(file_path=config.SERIALIZED_JSON)
+    json_serializer_object = serializer.JsonSerializer(data=user_data)
+    json_blob = json_serializer_object.serialize()
+    print("json file saved here :  %s " % config.SERIALIZED_JSON)
+    utilities.write_file(file_path=config.SERIALIZED_JSON, data=json_blob)
 
     # PICKLE serializations
-    pickle_blob = encoder.PickleSerializer(data=user_data)
-    pickle_file = pickle_blob.encode(file_path=config.SERIALIZED_PKL)
+    pickle_serializer_object = serializer.PickleSerializer(data=user_data)
+    pickle_blob = pickle_serializer_object.serialize()
+    print("pkl file saved here :  %s " % config.SERIALIZED_PKL)
+    utilities.write_file(file_path=config.SERIALIZED_PKL, data=pickle_blob)
 
     ''' De-Serializations '''
-    # pprint(json_blob.decode(file_path=config.SERIALIZED_JSON))
-    # pprint(pickle_blob.decode(file_path=config.SERIALIZED_PKL))
+    pprint(serializer.JsonSerializer.deserialize(data=json_blob))
+    pprint(serializer.PickleSerializer.deserialize(data=pickle_blob))
 
     ''' User readable output files '''
     # HTML file

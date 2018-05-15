@@ -3,26 +3,25 @@
 
 import unittest
 import config
-from modules import utilities, encoder, exporter
+from modules import utilities, serializer, exporter
 
 
 class UnitTests(unittest.TestCase):
     """
     Unit Test class for serializer
     """
-    user_data = utilities.read_data_file(config.TEST_DATA)
-    user_data = utilities.build_data(user_data)
+    user_data = utilities.build_data(utilities.read_data_file(config.TEST_DATA))
 
     def test_json(self):
-        json_blob = encoder.JsonSerializer(data=self.user_data)
-        json_file = json_blob.encode(file_path=config.SERIALIZED_JSON)
-        json_deserialized_data = json_blob.decode(file_path=json_file)
+        json_serializer_object = serializer.JsonSerializer(data=self.user_data)
+        json_blob = json_serializer_object.serialize()
+        json_deserialized_data = serializer.JsonSerializer.deserialize(data=json_blob)
         self.assertEqual(self.user_data, json_deserialized_data)
 
     def test_pickle(self):
-        pickle_blob = encoder.PickleSerializer(data=self.user_data)
-        pickle_file = pickle_blob.encode(file_path=config.SERIALIZED_PKL)
-        pickle_deserialized_data = pickle_blob.decode(file_path=pickle_file)
+        pickle_serializer_object = serializer.PickleSerializer(data=self.user_data)
+        pickle_blob = pickle_serializer_object.serialize()
+        pickle_deserialized_data = serializer.PickleSerializer.deserialize(data=pickle_blob)
         self.assertEqual(self.user_data, pickle_deserialized_data)
 
     def test_html(self):
