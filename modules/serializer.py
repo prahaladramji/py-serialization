@@ -4,21 +4,21 @@ import json
 import pickle
 
 # Serialization format classes registry
-registry = dict()
+serializer = dict()
 
 
 def get_supported_serializer_formats():
     """
     Get all the supported serialization formats.
     """
-    return registry
+    return serializer
 
 
 def register_serializer(target_class):
     """
     Helper method to register a serializer class.
     """
-    registry[target_class.__name__] = target_class
+    serializer[target_class.__name__] = target_class
     return target_class
 
 

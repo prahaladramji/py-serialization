@@ -2,21 +2,21 @@
 
 from collections import OrderedDict
 
-registry = dict()
+exporter = dict()
 
 
 def get_supported_output_formats():
     """
     Get all the supported output formats
     """
-    return registry
+    return exporter
 
 
 def register_exporter(target_class):
     """
     Helper method to register an exporter class.
     """
-    registry[target_class.__name__] = target_class
+    exporter[target_class.__name__] = target_class
     return target_class
 
 
